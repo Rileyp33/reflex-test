@@ -161,7 +161,6 @@
 				A8B313B7AEB1AF6418DC671F /* Pods-ReflexTest-tvOSTests.debug.xcconfig */,
 				62210BB7FDAB325EA8DAF50D /* Pods-ReflexTest-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

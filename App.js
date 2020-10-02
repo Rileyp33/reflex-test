@@ -1,114 +1,248 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react'
+import { View, TouchableOpacity, SafeAreaView, Text, Dimensions, Alert, TouchableWithoutFeedback } from 'react-native'
+import { ScaledSheet } from 'react-native-size-matters'
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { times, formatTimerText } from './src/helpers'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const INITIAL_STATE = {
+  time: 0,
+  points: 1,
+  turns: 1,
+  level: 1,
+  gameOver: false,
+  turnPress: false,
+  gameActive: false,
+  activeColor: false,
+  t1: 1000,
+  activeSquare: null,
+  t2: 2000
+}
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      time: 0,
+      points: 1,
+      turns: 1,
+      level: 1,
+      gameOver: false,
+      turnPress: false,
+      gameActive: false,
+      activeColor: false,
+      t1: 1000,
+      activeSquare: null,
+      t2: 2000
+    }
+  }
+
+  componentDidUpdate() {
+    const { gameActive, points } = this.state
+    if (gameActive && points < 1) {
+      this.clearAllTimers()
+      Alert.alert(
+        'Game Over',
+        this.getGameResult(),
+        [{ text: 'OK', onPress: () => this.setState(INITIAL_STATE) }],
+        { cancelable: false }
+      )
+    }
+  }
+
+  getGameResult = () => {
+    const { time, level } = this.state
+    return `You reached level ${level} with a time of ${formatTimerText(time)}.`
+  }
+
+  clearAllTimers = () => {
+    if (this.timerInterval) clearInterval(this.timerInterval)
+    if (this.activeColorTimer) clearTimeout(this.activeColorTimer)
+    if (this.activeSquareTimer) clearTimeout(this.activeSquareTimer)
+  }
+
+  componentWillUnmount() {
+    this.clearAllTimers()
+  }
+
+  setActiveColorTimer = () => {
+    const { t1, t2 } = this.state
+    if ( t1 > t2 ) {
+      if (!this.activeColorTimer) return
+      this.setState({
+        activeColor: true
+      })
+      clearTimeout(this.activeColorTimer)
+    } else {
+      this.activeColorTimer = setTimeout(() => {
+        this.setState({ activeColor: false })
+      }, t1)
+    }
+  }
+
+  setActiveSquareTimer = () => {
+    this.activeSquareTimer = setTimeout(() => {
+      const { t1, t2, turns, level, gameActive, points, turnPress } = this.state
+      this.setState({ turns: turns + 1 })
+      if (turns % 5 === 0 && gameActive) this.setState({
+        t1: t1 * 0.9,
+        t2: t2 * 0.75,
+        level: level + 1
+      })
+      if ( !turnPress && points === 1 ) {
+        return this.setState({ points: 0 })
+      } else if (!turnPress) {
+        this.setState({ points: points - 1 })
+      }
+      this.runGame()
+    }, this.state.t2)
+  }
+
+  runGame = () => {
+    const randomIndex = Math.floor(Math.random() * Math.floor(16))
+    this.setState({
+      activeSquare: randomIndex,
+      activeColor: true,
+      turnPress: false
+    })
+    this.setActiveColorTimer()
+    this.setActiveSquareTimer()
+  }
+
+  startTimer = () => {
+    this.runGame()
+    this.setState({ gameActive: true })
+    this.timerInterval = setInterval(() => {
+      this.setState({ time: this.state.time + 1 })
+    }, 1000)
+  }
+
+  pauseTimer = () => {
+    this.setState({ gameActive: false })
+    clearInterval(this.timerInterval)
+    if (this.activeColorTimer) clearTimeout(this.activeColorTimer)
+    if (this.activeSquareTimer) clearTimeout(this.activeSquareTimer)
+  }
+
+  handlePress = (i) => {
+    const { activeSquare, points, gameActive } = this.state
+    if (gameActive) {
+      this.setState({
+        points: i === activeSquare ? points + 1 : points - 1,
+        turnPress: true
+      })
+    }
+  }
+
+  renderGameButton = (i) => {
+    const { activeSquare, activeColor, gameActive } = this.state
+    const containerWidth = Dimensions.get('window').width - 32
+    const buttonWidth = containerWidth / 4
+    return (
+      <TouchableOpacity
+        key={i}
+        onPress={() => this.handlePress(i)}
+        disabled={!gameActive}
+        style={[
+          styles.gameButton,
+          {
+            width: buttonWidth,
+            height: buttonWidth,
+            backgroundColor: activeSquare === i && activeColor ? 'blue' : null
+          }
+        ]}
+      />
+    )
+  }
+
+  render() {
+    const { points, time, gameActive } = this.state
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.header}>The Reflex Game</Text>
+        <View style={styles.gameContainer}>
+          <View style={styles.boardContainer}>
+            {times(16, this.renderGameButton)}
           </View>
-        </ScrollView>
+          <View style={styles.bottomContainer}>
+            <TouchableOpacity
+              style={styles.emptyPressable}
+              onPress={() => this.handlePress(null)}
+              disabled={!gameActive}
+            />
+            <View style={styles.gameDataContainer}>
+              <Text style={styles.gameDataText}>{`Points: ${points}`}</Text>
+              <Text style={styles.gameDataText}>{formatTimerText(time)}</Text>
+            </View>
+            <View style={styles.gameDataContainer}>
+              <Text style={styles.gameDataText}>{`Turns: ${this.state.turns}`}</Text>
+              <Text style={styles.gameDataText}>{`Level: ${this.state.level}`}</Text>
+            </View>
+            <TouchableOpacity
+              onPress={gameActive ? this.pauseTimer : this.startTimer}
+              style={styles.startButton}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.startButtonText}>{gameActive ? 'Pause' : time ? 'Resume' : 'Start'}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </SafeAreaView>
-    </>
-  );
-};
+    )
+  }
+}
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const styles = ScaledSheet.create({
+  container: {
+    margin: 15,
+    flex: 1
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  header: {
+    textAlign: 'center',
+    marginVertical: '15@s',
+    fontSize: '18@s',
+    fontWeight: 'bold'
   },
-  body: {
-    backgroundColor: Colors.white,
+  gameContainer: {
+    flex: 1,
+    justifyContent: 'space-between'
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  boardContainer: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    flexWrap: 'wrap',
+    flexDirection: 'row'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  bottomContainer: {
+    flex: 1
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  emptyPressable: {
+    flex: 1
   },
-  highlight: {
-    fontWeight: '700',
+  gameDataContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: '15@vs'
   },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  gameDataText: {
+    fontSize: '16@s'
   },
-});
+  gameButton: {
+    borderWidth: 1,
+    borderColor: 'gray'
+  },
+  startButton: {
+    width: '100%',
+    height: '45@vs',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '6@s',
+    backgroundColor: 'gray'
+  },
+  startButtonText: {
+    color: 'white',
+    fontSize: '16@s',
+    fontWeight: 'bold'
+  }
+})
 
-export default App;
+export default App
