@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, SafeAreaView, Text, Dimensions, Alert, TouchableWithoutFeedback } from 'react-native'
+import { View, TouchableOpacity, SafeAreaView, Text, Dimensions, Alert } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { times, formatTimerText } from './src/helpers'
 
@@ -32,26 +33,44 @@ class App extends Component {
       activeColor: false,
       t1: 1000,
       activeSquare: null,
-      t2: 2000
+      t2: 2000,
+      highScore: null
     }
   }
 
-  componentDidUpdate() {
+  componentDidMount = async () => {
+    const highScore = await AsyncStorage.getItem('highScore')
+    this.setState({ highScore: highScore ? parseInt(highScore) : '' })
+  }
+
+  componentDidUpdate = async () => {
     const { gameActive, points } = this.state
     if (gameActive && points < 1) {
       this.clearAllTimers()
-      Alert.alert(
-        'Game Over',
-        this.getGameResult(),
-        [{ text: 'OK', onPress: () => this.setState(INITIAL_STATE) }],
-        { cancelable: false }
-      )
+      const gameResult = await this.getGameResult()
+      if (gameResult) {
+        Alert.alert(
+          'Game Over',
+          gameResult,
+          [{ text: 'OK', onPress: () => this.setState(INITIAL_STATE) }],
+          { cancelable: false }
+        )
+      }
     }
   }
 
-  getGameResult = () => {
-    const { time, level } = this.state
-    return `You reached level ${level} with a time of ${formatTimerText(time)}.`
+  getGameResult = async () => {
+    const { time, level, highScore } = this.state
+    let newHighScore
+    if (!highScore || time > highScore) {
+      newHighScore = time
+      const timeString = time.toString()
+      await AsyncStorage.setItem('highScore', timeString)
+      this.setState({ highScore: newHighScore })
+    }
+    let gameResult = `You reached level ${level} with a time of ${formatTimerText(time)}.`
+    if (newHighScore) gameResult += `\nNew high score!`
+    return gameResult
   }
 
   clearAllTimers = () => {
@@ -155,7 +174,7 @@ class App extends Component {
   }
 
   render() {
-    const { points, time, gameActive } = this.state
+    const { points, time, gameActive, highScore, level } = this.state
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.header}>The Reflex Game</Text>
@@ -170,12 +189,12 @@ class App extends Component {
               disabled={!gameActive}
             />
             <View style={styles.gameDataContainer}>
-              <Text style={styles.gameDataText}>{`Points: ${points}`}</Text>
-              <Text style={styles.gameDataText}>{formatTimerText(time)}</Text>
+              <Text style={styles.gameDataText}>{`High Score: ${highScore ? formatTimerText(highScore) : ''}`}</Text>
+              <Text style={styles.gameDataText}>{`Level: ${level}`}</Text>
             </View>
             <View style={styles.gameDataContainer}>
-              <Text style={styles.gameDataText}>{`Turns: ${this.state.turns}`}</Text>
-              <Text style={styles.gameDataText}>{`Level: ${this.state.level}`}</Text>
+              <Text style={styles.gameDataText}>{`Time: ${formatTimerText(time)}`}</Text>
+              <Text style={styles.gameDataText}>{`Points: ${points}`}</Text>
             </View>
             <TouchableOpacity
               onPress={gameActive ? this.pauseTimer : this.startTimer}
