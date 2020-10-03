@@ -111,12 +111,18 @@ class Game extends Component {
   setActiveSquareTimer = () => {
     this.activeSquareTimer = setTimeout(() => {
       const { t1, t2, turns, level, gameActive, points, turnPress } = this.state
+      if (
+        turns !== 1 &&
+        (turns + 1) % 5 === 0 &&
+        gameActive
+      ) {
+        this.setState({
+          t1: t1 * 0.9,
+          t2: t2 * 0.75,
+          level: level + 1
+        })
+      }
       this.setState({ turns: turns + 1 })
-      if (turns % 5 === 0 && gameActive) this.setState({
-        t1: t1 * 0.9,
-        t2: t2 * 0.75,
-        level: level + 1
-      })
       if (!turnPress && points === 1) {
         return this.setState({ points: 0 })
       } else if (!turnPress) {
@@ -153,8 +159,13 @@ class Game extends Component {
   }
 
   handlePress = (i) => {
-    const { activeSquare, points, gameActive } = this.state
-    if (gameActive) {
+    const {
+      activeSquare,
+      points,
+      gameActive,
+      turnPress
+    } = this.state
+    if (gameActive && !turnPress) {
       this.setState({
         points: i === activeSquare ? points + 1 : points - 1,
         turnPress: true

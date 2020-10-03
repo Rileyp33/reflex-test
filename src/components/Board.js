@@ -19,6 +19,7 @@ const Board = ({ activeSquare, activeColor, gameActive, handlePress }) => {
         key={i}
         onPress={() => handlePress(i)}
         disabled={!gameActive}
+        activeOpacity={0.7}
         style={[
           styles.gameButton,
           {
