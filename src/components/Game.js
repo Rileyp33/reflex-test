@@ -12,20 +12,20 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Board from './Board'
 import Button from './Button'
 import Scoreboard from './Scoreboard'
-import { formatTimerText } from '../helpers'
+import { formatTimerText, times } from '../helpers'
 import { colors } from '../styles'
 
-const INITIAL_STATE = {
+const RESET_STATE = {
   time: 0,
   points: 1,
   turns: 1,
   level: 1,
   gameOver: false,
-  turnPress: false,
+  turnPresses: [],
   gameActive: false,
   activeColor: false,
   t1: 1000,
-  activeSquare: null,
+  activeSquares: [],
   t2: 2000
 }
 
@@ -38,48 +38,61 @@ class Game extends Component {
       turns: 1,
       level: 1,
       gameOver: false,
-      turnPress: false,
+      turnPresses: [],
       gameActive: false,
       activeColor: false,
       t1: 1000,
-      activeSquare: null,
+      activeSquares: [],
       t2: 2000,
+      nSquares: 1,
       highScore: null
     }
   }
 
-  componentDidMount = async () => {
-    const highScore = await AsyncStorage.getItem('highScore')
-    this.setState({ highScore: highScore ? parseInt(highScore) : '' })
+  componentDidMount = () => {
+    this.getHighScore()
   }
 
-  componentDidUpdate = async () => {
-    const { gameActive, points } = this.state
-    if (gameActive && points < 1) {
+  componentDidUpdate = async (_, prevState) => {
+    const { gameActive, points, nSquares } = this.state
+    if (
+      gameActive &&
+      points === 0
+      && points !== prevState.points
+    ) {
       this.clearAllTimers()
+      this.setState(RESET_STATE)
       const gameResult = await this.getGameResult()
       if (gameResult) {
         Alert.alert(
           'Game Over',
           gameResult,
-          [{ text: 'OK', onPress: () => this.setState(INITIAL_STATE) }],
           { cancelable: false }
         )
       }
     }
+    if (prevState.nSquares !== nSquares) {
+      this.getHighScore()
+    }
+  }
+
+  getHighScore = async () => {
+    const { nSquares } = this.state
+    const highScore = await AsyncStorage.getItem(nSquares.toString())
+    this.setState({ highScore: highScore ? parseInt(highScore) : '' })
   }
 
   getGameResult = async () => {
-    const { time, level, highScore } = this.state
+    const { time, level, highScore, nSquares } = this.state
     let newHighScore
     if (!highScore || time > highScore) {
       newHighScore = time
       const timeString = time.toString()
-      await AsyncStorage.setItem('highScore', timeString)
+      await AsyncStorage.setItem(nSquares.toString(), timeString)
       this.setState({ highScore: newHighScore })
     }
     let gameResult = `You reached level ${level} with a time of ${formatTimerText(time)}.`
-    if (newHighScore) gameResult += `\nNew high score!`
+    if (newHighScore) gameResult += `\nNew high score for difficulty level ${nSquares}!`
     return gameResult
   }
 
@@ -97,9 +110,7 @@ class Game extends Component {
     const { t1, t2 } = this.state
     if (t1 > t2) {
       if (!this.activeColorTimer) return
-      this.setState({
-        activeColor: true
-      })
+      this.setState({ activeColor: true })
       clearTimeout(this.activeColorTimer)
     } else {
       this.activeColorTimer = setTimeout(() => {
@@ -110,7 +121,17 @@ class Game extends Component {
 
   setActiveSquareTimer = () => {
     this.activeSquareTimer = setTimeout(() => {
-      const { t1, t2, turns, level, gameActive, points, turnPress } = this.state
+      const {
+        t1,
+        t2,
+        turns,
+        level,
+        gameActive,
+        points,
+        turnPresses,
+        nSquares
+      } = this.state
+      const timeoutPoints = nSquares - turnPresses.length
       if (
         turns !== 1 &&
         (turns + 1) % 5 === 0 &&
@@ -123,21 +144,40 @@ class Game extends Component {
         })
       }
       this.setState({ turns: turns + 1 })
-      if (!turnPress && points === 1) {
+      if (timeoutPoints && points === 1) {
         return this.setState({ points: 0 })
-      } else if (!turnPress) {
-        this.setState({ points: points - 1 })
+      } else if (timeoutPoints) {
+        this.setState({ points: points - timeoutPoints })
       }
       this.runGame()
     }, this.state.t2)
   }
 
+  getRandomIndex = () => {
+    return Math.floor(Math.random() * Math.floor(16))
+  }
+
+  getNrandomIndices = (nSquares) => {
+    let randomIndices = []
+    const pushNewIndex = () => {
+      const newIndex = this.getRandomIndex()
+      if (!randomIndices.includes(newIndex)) {
+        randomIndices.push(newIndex)
+      } else {
+        pushNewIndex()
+      }
+    }
+    times(nSquares, pushNewIndex)
+    return randomIndices
+  }
+
   runGame = () => {
-    const randomIndex = Math.floor(Math.random() * Math.floor(16))
+    const { nSquares } = this.state
+    const randomSquares = this.getNrandomIndices(nSquares)
     this.setState({
-      activeSquare: randomIndex,
+      activeSquares: randomSquares,
       activeColor: true,
-      turnPress: false
+      turnPresses: []
     })
     this.setActiveColorTimer()
     this.setActiveSquareTimer()
@@ -160,18 +200,20 @@ class Game extends Component {
 
   handlePress = (i) => {
     const {
-      activeSquare,
+      activeSquares,
       points,
       gameActive,
-      turnPress
+      turnPresses
     } = this.state
-    if (gameActive && !turnPress) {
+    if (gameActive && !turnPresses.includes(i)) {
       this.setState({
-        points: i === activeSquare ? points + 1 : points - 1,
-        turnPress: true
+        points: activeSquares.includes(i) ? points + 1 : points - 1,
+        turnPresses: [...turnPresses, i]
       })
     }
   }
+
+  setDifficulty = (n) => this.setState({ nSquares: n })
 
   render() {
     const {
@@ -180,32 +222,37 @@ class Game extends Component {
       gameActive,
       highScore,
       level,
-      activeSquare,
-      activeColor
+      activeSquares,
+      activeColor,
+      turns,
+      nSquares
     } = this.state
     return (
       <>
         <Image
-            source={require('../assets/Texture.jpg')}
-            style={styles.imageBackground}
-          />
+          source={require('../assets/Texture.jpg')}
+          style={styles.imageBackground}
+        />
         <SafeAreaView style={styles.container}>
           <Text style={styles.header}>The Reflex Game</Text>
           <View style={styles.gameContainer}>
             <Board
-              activeSquare={activeSquare}
+              activeSquares={activeSquares}
               activeColor={activeColor}
               gameActive={gameActive}
               handlePress={this.handlePress}
+              turns={turns}
             />
             <View style={styles.bottomContainer}>
               <Scoreboard
                 handlePress={this.handlePress}
+                setDifficulty={this.setDifficulty}
                 gameActive={gameActive}
                 highScore={highScore}
                 level={level}
                 time={time}
                 points={points}
+                nSquares={nSquares}
               />
               <Button
                 gameActive={gameActive}

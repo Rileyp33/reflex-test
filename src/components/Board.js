@@ -10,7 +10,8 @@ import { ScaledSheet } from 'react-native-size-matters'
 import { times } from '../helpers'
 import { colors } from '../styles'
 
-const Board = ({ activeSquare, activeColor, gameActive, handlePress }) => {
+const Board = ({ activeSquares, activeColor, gameActive, handlePress, turns }) => {
+  const colorSwitch = turns % 2
   const renderGameButton = (i) => {
     const containerWidth = Dimensions.get('window').width - 32
     const buttonWidth = containerWidth / 4
@@ -25,7 +26,11 @@ const Board = ({ activeSquare, activeColor, gameActive, handlePress }) => {
           {
             width: buttonWidth,
             height: buttonWidth,
-            backgroundColor: activeSquare === i && activeColor ? colors.blue : 'white'
+            backgroundColor: activeSquares.includes(i) && activeColor
+              ? colorSwitch
+                ? colors.blue
+                : colors.purple
+              : 'white'
           }
         ]}
       />
