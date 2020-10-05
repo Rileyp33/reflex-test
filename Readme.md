@@ -2,17 +2,19 @@
 
 1. Clone and install project dependencies
 
-`npm i && cd ios && pod install %% ..`
+`$ npm i && cd ios && pod install %% ..`
 
 2. Ensure you have [Xcode 11+](https://xcodereleases.com/) and its associated command line tools
 
-3. Run the project on any iPhone simulator:
+3. Run the project on your default iPhone simulator:
 
-`react-native run-ios`
+`$ react-native run-ios`
+
+or, start the metro bundler with `$ react-native start`, select a simulator in Xcode, and press the play icon.
 
 
 **Test your reflexes on a device**
 
-1. In Xcode, go to Product > Scheme > Edit Scheme > Build Configuration: Release
+1. Download [TestFlight](https://apps.apple.com/us/app/testflight/id899247664)
 
-2. Plug in your iPhone, select your device from the device dropdown in the navigation bar, and press the play icon to build and install.
+2. Follow [this link](https://testflight.apple.com/join/MxYqYp4t) to download the closed beta
