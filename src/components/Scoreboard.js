@@ -1,7 +1,8 @@
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, Text } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
+import PlusMinus from './PlusMinus'
 import ScoringItem from './ScoringItem'
 import { formatTimerText } from '../helpers'
 import { colors } from '../styles'
@@ -12,7 +13,9 @@ const Scoreboard = ({
   highScore,
   level,
   time,
-  points
+  points,
+  setDifficulty,
+  nSquares
 }) => {
   return (
     <TouchableOpacity
@@ -21,6 +24,10 @@ const Scoreboard = ({
       activeOpacity={1}
       disabled={!gameActive}
     >
+      <View style={styles.difficultyContainer}>
+        <Text style={styles.difficultyText}>{`Difficulty: ${nSquares}`}</Text>
+        <PlusMinus onSelect={setDifficulty}/>
+      </View>
       <View style={styles.gameDataContainer}>
         <ScoringItem
           label={'High Score'}
@@ -73,6 +80,17 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: '10@vs'
+  },
+  difficultyContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  difficultyText: {
+    color: colors.orange,
+    fontWeight: 'bold',
+    fontSize: '16@s',
+    alignSelf: 'flex-end',
+    marginBottom: `10@vs`
   }
 })
 

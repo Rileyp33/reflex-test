@@ -1,4 +1,4 @@
-export const times = (n, fxn) => [...Array(n)].map((item, i) => fxn(i))
+export const times = (n, fxn) => [...Array(n)].map((item, i = null) => fxn(i))
 
 export const formatTimerText = (time) => {
   const minutes = parseInt(time / 60)
