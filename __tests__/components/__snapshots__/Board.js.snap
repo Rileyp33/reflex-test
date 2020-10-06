@@ -1,0 +1,1051 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game board renders correctly in difficulty level 1 on an odd numbered turn with the last square purple 1`] = `
+<View
+  style={
+    Object {
+      "borderColor": "#6e6e6e",
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#009FB7",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Game board renders correctly in difficulty level 2 on an even numbered turn with the first two squares blue 1`] = `
+<View
+  style={
+    Object {
+      "borderColor": "#6e6e6e",
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#9B5DE5",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#9B5DE5",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Game board renders correctly in difficulty level 3 on an odd numbered turn with the last three squares purple 1`] = `
+<View
+  style={
+    Object {
+      "borderColor": "#6e6e6e",
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#009FB7",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#009FB7",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#009FB7",
+        "borderColor": "#E6E6EA",
+        "borderWidth": 0.5,
+        "height": 179.5,
+        "opacity": 1,
+        "width": 179.5,
+      }
+    }
+  />
+</View>
+`;

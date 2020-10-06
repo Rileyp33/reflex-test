@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scoreboard item renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 8.571428571428571,
+        "flexDirection": "row",
+        "paddingHorizontal": 17.142857142857142,
+        "paddingVertical": 21.428571428571427,
+        "width": "49%",
+      },
+      Object {
+        "backgroundColor": "#009FB7",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "width": "63%%",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "fontWeight": "bold",
+            "textAlign": "justify",
+          },
+          Object {
+            "color": "white",
+          },
+        ]
+      }
+    >
+      Level
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderLeftColor": "white",
+          "borderLeftWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "width": "37%",
+        },
+        Object {
+          "borderLeftColor": "white",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "fontWeight": "bold",
+            "textAlign": "justify",
+          },
+          Object {
+            "color": "white",
+          },
+        ]
+      }
+    >
+      1
+    </Text>
+  </View>
+</View>
+`;
