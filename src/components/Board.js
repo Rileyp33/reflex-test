@@ -1,39 +1,43 @@
 import React from 'react'
 import {
   View,
-  TouchableOpacity,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  Pressable,
+  Image
 } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
+import Wall from './Wall'
+import FlipCard from './FlipCard'
 import { times } from '../helpers'
-import { colors } from '../styles'
 
-const Board = ({ activeSquares, activeColor, gameActive, handlePress, turns }) => {
-  const colorSwitch = turns % 2
+const Board = ({
+  activeSquares,
+  activeColor,
+  gameActive,
+  handlePress,
+  useAfter
+}) => {
   const renderGameButton = (i) => {
     const containerWidth = Dimensions.get('window').width - 32
     const buttonWidth = containerWidth / 4
     return (
-      <TouchableOpacity
+      <Pressable
         key={i}
-        onPress={() => handlePress(i)}
+        onPressIn={() => handlePress(i)}
         disabled={!gameActive}
-        activeOpacity={0.7}
-        style={[
-          styles.gameButton,
-          {
-            width: buttonWidth,
-            height: buttonWidth,
-            backgroundColor: activeSquares.includes(i) && activeColor
-              ? colorSwitch
-                ? colors.blue
-                : colors.purple
-              : 'white'
-          }
-        ]}
-      />
+        style={{
+          width: buttonWidth,
+          height: buttonWidth,
+        }}
+      >
+        <Wall i={i}/>
+        <FlipCard
+          flipped={activeSquares.includes(i) && activeColor}
+          i={i}
+        />
+      </Pressable>
     )
   }
 
@@ -46,14 +50,13 @@ const Board = ({ activeSquares, activeColor, gameActive, handlePress, turns }) =
 
 const styles = ScaledSheet.create({
   boardContainer: {
-    borderWidth: 1,
-    borderColor: colors.darkGray,
     flexWrap: 'wrap',
     flexDirection: 'row'
   },
-  gameButton: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.gray
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover'
   }
 })
 

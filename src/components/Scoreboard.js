@@ -25,7 +25,9 @@ const Scoreboard = ({
       disabled={!gameActive}
     >
       <View style={styles.difficultyContainer}>
-        <Text style={styles.difficultyText}>{`Difficulty: ${nSquares}`}</Text>
+        <View style={styles.difficultyTextContainer}>
+          <Text style={styles.difficultyText}>{`Difficulty: ${nSquares}`}</Text>
+        </View>
         <PlusMinus onSelect={setDifficulty}/>
       </View>
       <View style={styles.gameDataContainer}>
@@ -86,11 +88,20 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-between'
   },
   difficultyText: {
-    color: colors.orange,
+    color: colors.gray,
     fontWeight: 'bold',
-    fontSize: '16@s',
-    alignSelf: 'flex-end',
-    marginBottom: `10@vs`
+    fontSize: '16@s'
+  },
+  difficultyTextContainer: {
+    backgroundColor: 'black',
+    flex: 1,
+    marginVertical: '10@s',
+    marginRight: '10@s',
+    paddingVertical: '8@vs',
+    paddingHorizontal: '8@s',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    borderRadius: '5@s'
   }
 })
 

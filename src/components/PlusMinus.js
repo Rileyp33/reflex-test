@@ -38,8 +38,8 @@ const PlusMinus = ({ onSelect }) => {
 
 const styles = ScaledSheet.create({
   container: {
-    width: '28@s',
-    height: '28@s',
+    width: '36@s',
+    height: '36@s',
     marginBottom: '10@vs',
     alignSelf: 'flex-end'
   },

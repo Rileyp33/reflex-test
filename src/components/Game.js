@@ -45,6 +45,7 @@ class Game extends Component {
       activeSquares: [],
       t2: 2000,
       nSquares: 1,
+      useAfter: false,
       highScore: null
     }
   }
@@ -144,7 +145,7 @@ class Game extends Component {
         })
       }
       this.setState({ turns: turns + 1 })
-      if (timeoutPoints && points === 1) {
+      if (timeoutPoints && points - timeoutPoints < 1) {
         return this.setState({ points: 0 })
       } else if (timeoutPoints) {
         this.setState({ points: points - timeoutPoints })
@@ -177,6 +178,7 @@ class Game extends Component {
     this.setState({
       activeSquares: randomSquares,
       activeColor: true,
+      useAfter: false,
       turnPresses: []
     })
     this.setActiveColorTimer()
@@ -205,9 +207,11 @@ class Game extends Component {
       gameActive,
       turnPresses
     } = this.state
+    const scored = activeSquares.includes(i)
     if (gameActive && !turnPresses.includes(i)) {
       this.setState({
-        points: activeSquares.includes(i) ? points + 1 : points - 1,
+        points: scored ? points + 1 : points - 1,
+        useAfter: scored,
         turnPresses: [...turnPresses, i]
       })
     }
@@ -225,13 +229,18 @@ class Game extends Component {
       activeSquares,
       activeColor,
       turns,
-      nSquares
+      nSquares,
+      useAfter
     } = this.state
     return (
-      <>
+      <View style={styles.screen}>
         <Image
-          source={require('../assets/Texture.jpg')}
+          source={require('../assets/Texture.png')}
           style={styles.imageBackground}
+        />
+        <Image
+          source={require('../assets/Crack.png')}
+          style={[styles.imageBackground, styles.crack]}
         />
         <SafeAreaView style={styles.container}>
           <Text style={styles.header}>The Reflex Game</Text>
@@ -239,6 +248,7 @@ class Game extends Component {
             <Board
               activeSquares={activeSquares}
               activeColor={activeColor}
+              useAfter={useAfter}
               gameActive={gameActive}
               handlePress={this.handlePress}
               turns={turns}
@@ -263,12 +273,16 @@ class Game extends Component {
             </View>
           </View>
         </SafeAreaView>
-      </>
+      </View>
     )
   }
 }
 
 const styles = ScaledSheet.create({
+  screen: {
+    backgroundColor: colors.tan,
+    flex: 1
+  },
   container: {
     margin: 15,
     flex: 1
@@ -290,9 +304,14 @@ const styles = ScaledSheet.create({
   imageBackground: {
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
+    resizeMode: 'contain',
+    opacity: 0.4,
     position: 'absolute',
+    top: 350,
     zIndex: -1
+  },
+  crack: {
+    left: 90
   }
 })
 
