@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
 import PlusMinus from './PlusMinus'
@@ -26,7 +26,7 @@ const Scoreboard = ({
     >
       <View style={styles.difficultyContainer}>
         <View style={styles.difficultyTextContainer}>
-          <Text style={styles.difficultyText}>{`Difficulty: ${nSquares}`}</Text>
+          <Text style={styles.difficultyText}>{`Difficulty: ${nSquares} Monster${nSquares > 1 ? 's' : ''}`}</Text>
         </View>
         <PlusMinus onSelect={setDifficulty}/>
       </View>
@@ -75,8 +75,8 @@ const styles = ScaledSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     marginBottom: '10@vs',
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1
+    borderBottomColor: colors.darkGray,
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   gameDataContainer: {
     flexDirection: 'row',

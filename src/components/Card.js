@@ -5,7 +5,7 @@ import * as Animatable from 'react-native-animatable'
 
 import { colors } from '../styles'
 
-const Card = ({ interval, flipped, i }) => {
+const Card = ({ interval, flipped, i, pressed, isActive }) => {
   const renderHole = (i) => {
     switch (i % 5) {
       case 0:
@@ -113,6 +113,15 @@ const Card = ({ interval, flipped, i }) => {
 
   return (
       <View style={styles.container}>
+        {
+          pressed &&
+            <View style={
+              isActive
+                ? styles.hit
+                : styles.miss
+              }
+            />
+        }
         <View style={styles.holeContainer}>
           {renderHole(i)}
         </View>
@@ -167,6 +176,22 @@ const styles = ScaledSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'stretch'
+  },
+  hit: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 204, 10, 0.25)',
+    borderRadius: 20,
+    zIndex: 500
+  },
+  miss: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(204, 0, 0, 0.25)',
+    borderRadius: 20,
+    zIndex: 500
   }
 })
 

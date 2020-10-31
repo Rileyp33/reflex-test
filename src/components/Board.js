@@ -19,6 +19,7 @@ const Board = ({
   const renderGameButton = (i) => {
     const containerWidth = Dimensions.get('window').width - 32
     const buttonWidth = containerWidth / 4
+    const isActive = activeSquares.includes(i)
     return (
       <Pressable
         key={i}
@@ -29,11 +30,15 @@ const Board = ({
           height: buttonWidth,
         }}
       >
-        <Card
-          flipped={activeSquares.includes(i) && activeColor}
-          i={i}
-          interval={interval}
-        />
+        {({ pressed }) => (
+          <Card
+            flipped={isActive && activeColor}
+            isActive={isActive}
+            i={i}
+            interval={interval}
+            pressed={pressed}
+          />
+        )}
       </Pressable>
     )
   }

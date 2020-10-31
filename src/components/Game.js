@@ -4,7 +4,8 @@ import {
   SafeAreaView,
   Text,
   Alert,
-  Image
+  Image,
+  StyleSheet
 } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -250,7 +251,17 @@ class Game extends Component {
           style={[styles.imageBackground, styles.crack]}
         />
         <SafeAreaView style={styles.container}>
-          <Text style={styles.header}>Whack-a-Monster</Text>
+          <View style={styles.titleContainer}>
+            <Image
+              source={require('../assets/GhostTransparent.png')}
+              style={styles.titleImageLeft}
+            />
+            <Text style={styles.header}>Whack-a-Monster!</Text>
+            <Image
+              source={require('../assets/TransparentMonster.png')}
+              style={styles.titleImageRight}
+            />
+          </View>
           <View style={styles.gameContainer}>
             <Board
               activeSquares={activeSquares}
@@ -319,6 +330,23 @@ const styles = ScaledSheet.create({
   },
   crack: {
     left: 90
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '8@s',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.darkGray
+  },
+  titleImageLeft: {
+    height: '34@s',
+    width: '34@s'
+  },
+  titleImageRight: {
+    height: '38@s',
+    width: '38@s',
+    transform: [{ rotateY: '180deg' }]
   }
 })
 
