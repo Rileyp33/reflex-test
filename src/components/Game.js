@@ -58,8 +58,8 @@ class Game extends Component {
     const { gameActive, points, nSquares } = this.state
     if (
       gameActive &&
-      points === 0
-      && points !== prevState.points
+      points === 0 &&
+      points !== prevState.points
     ) {
       this.clearAllTimers()
       this.setState(RESET_STATE)
@@ -68,6 +68,12 @@ class Game extends Component {
         Alert.alert(
           'Game Over',
           gameResult,
+          [
+            {
+              text: 'OK',
+              onPress: () => this.setState(RESET_STATE)
+            },
+          ],
           { cancelable: false }
         )
       }
@@ -139,8 +145,8 @@ class Game extends Component {
         gameActive
       ) {
         this.setState({
-          t1: t1 * 0.9,
-          t2: t2 * 0.75,
+          t1: t1 * 0.98,
+          t2: t2 * 0.95,
           level: level + 1
         })
       }
@@ -230,7 +236,8 @@ class Game extends Component {
       activeColor,
       turns,
       nSquares,
-      useAfter
+      useAfter,
+      t1
     } = this.state
     return (
       <View style={styles.screen}>
@@ -243,7 +250,7 @@ class Game extends Component {
           style={[styles.imageBackground, styles.crack]}
         />
         <SafeAreaView style={styles.container}>
-          <Text style={styles.header}>The Reflex Game</Text>
+          <Text style={styles.header}>Whack-a-Monster</Text>
           <View style={styles.gameContainer}>
             <Board
               activeSquares={activeSquares}
@@ -251,7 +258,7 @@ class Game extends Component {
               useAfter={useAfter}
               gameActive={gameActive}
               handlePress={this.handlePress}
-              turns={turns}
+              interval={t1}
             />
             <View style={styles.bottomContainer}>
               <Scoreboard

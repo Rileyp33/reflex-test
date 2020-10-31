@@ -2,14 +2,11 @@ import React from 'react'
 import {
   View,
   Dimensions,
-  StyleSheet,
-  Pressable,
-  Image
+  Pressable
 } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
-import Wall from './Wall'
-import FlipCard from './FlipCard'
+import Card from './Card'
 import { times } from '../helpers'
 
 const Board = ({
@@ -17,7 +14,7 @@ const Board = ({
   activeColor,
   gameActive,
   handlePress,
-  useAfter
+  interval
 }) => {
   const renderGameButton = (i) => {
     const containerWidth = Dimensions.get('window').width - 32
@@ -32,10 +29,10 @@ const Board = ({
           height: buttonWidth,
         }}
       >
-        <Wall i={i}/>
-        <FlipCard
+        <Card
           flipped={activeSquares.includes(i) && activeColor}
           i={i}
+          interval={interval}
         />
       </Pressable>
     )
