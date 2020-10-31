@@ -13,6 +13,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Board from './Board'
 import Button from './Button'
 import Scoreboard from './Scoreboard'
+import InfoButton from './InfoButton'
+import InfoModal from './InfoModal'
 import { formatTimerText, times } from '../helpers'
 import { colors } from '../styles'
 
@@ -25,9 +27,10 @@ const RESET_STATE = {
   turnPresses: [],
   gameActive: false,
   activeColor: false,
-  t1: 1000,
+  t1: 800,
   activeSquares: [],
-  t2: 2000
+  t2: 1600,
+  showModal: false
 }
 
 class Game extends Component {
@@ -42,9 +45,10 @@ class Game extends Component {
       turnPresses: [],
       gameActive: false,
       activeColor: false,
-      t1: 1000,
+      t1: 800,
       activeSquares: [],
-      t2: 2000,
+      t2: 1600,
+      showModal: false,
       nSquares: 1,
       useAfter: false,
       highScore: null
@@ -226,6 +230,9 @@ class Game extends Component {
 
   setDifficulty = (n) => this.setState({ nSquares: n })
 
+  showModal = () => this.setState({ showModal: true })
+  hideModal = () => this.setState({ showModal: false })
+
   render() {
     const {
       points,
@@ -235,7 +242,7 @@ class Game extends Component {
       level,
       activeSquares,
       activeColor,
-      turns,
+      showModal,
       nSquares,
       useAfter,
       t1
@@ -271,6 +278,7 @@ class Game extends Component {
               handlePress={this.handlePress}
               interval={t1}
             />
+            <InfoButton onPress={this.showModal}/>
             <View style={styles.bottomContainer}>
               <Scoreboard
                 handlePress={this.handlePress}
@@ -291,6 +299,10 @@ class Game extends Component {
             </View>
           </View>
         </SafeAreaView>
+        <InfoModal
+          visible={showModal}
+          onClose={this.hideModal}
+        />
       </View>
     )
   }
