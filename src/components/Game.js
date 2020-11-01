@@ -13,7 +13,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Board from './Board'
 import Button from './Button'
 import Scoreboard from './Scoreboard'
-import InfoButton from './InfoButton'
 import InfoModal from './InfoModal'
 import { formatTimerText, times } from '../helpers'
 import { colors } from '../styles'
@@ -263,7 +262,7 @@ class Game extends Component {
               source={require('../assets/GhostTransparent.png')}
               style={styles.titleImageLeft}
             />
-            <Text style={styles.header}>Whack-a-Monster!</Text>
+            <Text style={styles.header}>Reflex Monster</Text>
             <Image
               source={require('../assets/TransparentMonster.png')}
               style={styles.titleImageRight}
@@ -278,7 +277,6 @@ class Game extends Component {
               handlePress={this.handlePress}
               interval={t1}
             />
-            <InfoButton onPress={this.showModal}/>
             <View style={styles.bottomContainer}>
               <Scoreboard
                 handlePress={this.handlePress}
@@ -289,6 +287,7 @@ class Game extends Component {
                 time={time}
                 points={points}
                 nSquares={nSquares}
+                showModal={this.showModal}
               />
               <Button
                 gameActive={gameActive}

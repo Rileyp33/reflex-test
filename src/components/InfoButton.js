@@ -14,7 +14,7 @@ const InfoButton = ({ onPress }) => {
         height={scale(36)}
         width={scale(36)}
         fill={colors.orange}
-        style={{ alignSelf: 'flex-end' }}
+        style={{ marginRight: scale(10) }}
       />
     </TouchableOpacity>
   )

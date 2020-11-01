@@ -3,6 +3,7 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
 import PlusMinus from './PlusMinus'
+import InfoButton from './InfoButton'
 import ScoringItem from './ScoringItem'
 import { formatTimerText } from '../helpers'
 import { colors } from '../styles'
@@ -15,7 +16,8 @@ const Scoreboard = ({
   time,
   points,
   setDifficulty,
-  nSquares
+  nSquares,
+  showModal
 }) => {
   return (
     <TouchableOpacity
@@ -25,6 +27,7 @@ const Scoreboard = ({
       disabled={!gameActive}
     >
       <View style={styles.difficultyContainer}>
+        <InfoButton onPress={showModal}/>
         <View style={styles.difficultyTextContainer}>
           <Text style={styles.difficultyText}>{`Difficulty: ${nSquares} Monster${nSquares > 1 ? 's' : ''}`}</Text>
         </View>
@@ -85,12 +88,14 @@ const styles = ScaledSheet.create({
   },
   difficultyContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   difficultyText: {
     color: colors.gray,
     fontWeight: 'bold',
-    fontSize: '16@s'
+    fontSize: '16@s',
+    textAlign: 'center'
   },
   difficultyTextContainer: {
     backgroundColor: 'black',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
+import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 import Modal from 'react-native-modal'
 import { ScaledSheet } from 'react-native-size-matters'
 import { colors } from '../styles'
@@ -17,14 +17,14 @@ const InfoModal = ({ onClose, visible }) => {
           <Text style={styles.header}>How to play</Text>
           <View style={styles.divider}/>
         </View>
-        <View style={styles.content}>
+        <ScrollView contentContainerStyle={styles.content}>
           {instructions.map(i => (
             <View style={styles.item}>
               {i.icon}
               <Text style={styles.text}>{i.text}</Text>
             </View>
           ))}
-        </View>
+        </ScrollView>
         <TouchableOpacity
           onPress={onClose}
           style={styles.closeButton}
@@ -41,7 +41,7 @@ export default InfoModal
 
 const styles = ScaledSheet.create({
   conatiner: {
-    marginVertical: '100@s',
+    marginVertical: '50@s',
     marginHorizontal: '20@s',
     borderWidth: '3@s',
     borderColor: colors.yellow,
@@ -108,7 +108,7 @@ const styles = ScaledSheet.create({
   },
   text: {
     flex: 1,
-    fontSize: '18@s',
+    fontSize: '17@s',
     color: 'gray'
   }
 })
