@@ -19,7 +19,7 @@ const InfoModal = ({ onClose, visible }) => {
         </View>
         <ScrollView contentContainerStyle={styles.content}>
           {instructions.map(i => (
-            <View style={styles.item}>
+            <View style={styles.item} key={i.key}>
               {i.icon}
               <Text style={styles.text}>{i.text}</Text>
             </View>
@@ -118,20 +118,23 @@ const instructions = [
     icon: <View style={[styles.image, styles.plusMinus]}>
       <PlusMinus/>
     </View>,
-    text: 'Select your difficulty level. Quick fingers? More monsters.'
+    text: 'Select your difficulty level. Quick fingers? More monsters.',
+    key: 'plus'
   },
   {
     icon: <Image
       source={require('../assets/FingerIcon.jpg')}
       style={styles.image}
     />,
-    text: 'Hone your reflexes. Start each new game with one point and add to your score for every moster mashed. Careful! If you miss your mark, you lose a point.'
+    text: 'Hone your reflexes. Start each new game with one point and add to your score for every moster mashed. Careful! If you miss your mark, you lose a point.',
+    key: 'finger'
   },
   {
     icon: <Image
       source={require('../assets/Stopwatch.png')}
       style={styles.image}
     />,
-    text: 'Level up for every five turns you stay alive. How fast are you?'
+    text: 'Level up for every five turns you stay alive. How fast are you?',
+    key: 'watch'
   },
 ]

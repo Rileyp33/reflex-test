@@ -26,9 +26,9 @@ const RESET_STATE = {
   turnPresses: [],
   gameActive: false,
   activeColor: false,
-  t1: 800,
+  t1: 650,
   activeSquares: [],
-  t2: 1600,
+  t2: 1300,
   showModal: false
 }
 
@@ -44,9 +44,9 @@ class Game extends Component {
       turnPresses: [],
       gameActive: false,
       activeColor: false,
-      t1: 800,
+      t1: 650,
       activeSquares: [],
-      t2: 1600,
+      t2: 1300,
       showModal: false,
       nSquares: 1,
       useAfter: false,
@@ -149,8 +149,8 @@ class Game extends Component {
         gameActive
       ) {
         this.setState({
-          t1: t1 * 0.98,
-          t2: t2 * 0.95,
+          t1: t1 * 0.97,
+          t2: t2 * 0.93,
           level: level + 1
         })
       }
@@ -232,6 +232,11 @@ class Game extends Component {
   showModal = () => this.setState({ showModal: true })
   hideModal = () => this.setState({ showModal: false })
 
+  resetGame = () => {
+    this.setState(RESET_STATE)
+    this.clearAllTimers()
+  }
+
   render() {
     const {
       points,
@@ -293,6 +298,7 @@ class Game extends Component {
                 gameActive={gameActive}
                 pauseTimer={this.pauseTimer}
                 startTimer={this.startTimer}
+                resetGame={this.resetGame}
                 time={time}
               />
             </View>

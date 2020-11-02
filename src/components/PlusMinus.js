@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, TouchableOpacity, ActionSheetIOS } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
-const PlusMinus = ({ onSelect }) => {
+const PlusMinus = ({ onSelect, disabled }) => {
 
   const onPress = () => {
     ActionSheetIOS.showActionSheetWithOptions(
@@ -27,6 +27,7 @@ const PlusMinus = ({ onSelect }) => {
       style={styles.container}
       onPress={onPress}
       activeOpacity={0.7}
+      disabled={disabled}
     >
       <Image
         source={require('../assets/PlusMinus.png')}

@@ -1,31 +1,65 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { ScaledSheet } from 'react-native-size-matters'
 
 import { colors } from '../styles'
 
-const Button = ({ gameActive, pauseTimer, startTimer, time}) => {
+const Button = ({ gameActive, pauseTimer, startTimer, time, resetGame }) => {
+  const renderStartButton = () => {
+    return (
+      <TouchableOpacity
+        onPress={gameActive ? pauseTimer : startTimer}
+        style={styles.startButton}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.buttonText}>{gameActive ? 'Pause' : time ? 'Resume' : 'Start'}</Text>
+      </TouchableOpacity>
+    )
+  }
+
+  const renderResetButton = () => {
+    if (gameActive || (!gameActive && time)) return (
+      <TouchableOpacity
+        onPress={resetGame}
+        style={styles.resetButton}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.buttonText}>Reset</Text>
+      </TouchableOpacity>
+    )
+  }
+
   return (
-    <TouchableOpacity
-      onPress={gameActive ? pauseTimer : startTimer}
-      style={styles.startButton}
-      activeOpacity={0.7}
-    >
-      <Text style={styles.startButtonText}>{gameActive ? 'Pause' : time ? 'Resume' : 'Start'}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      {renderStartButton()}
+      {renderResetButton()}
+    </View>
   )
 }
 
 const styles = ScaledSheet.create({
+  container: {
+    flexDirection: 'row',
+    width: '100%'
+  },
   startButton: {
-    width: '100%',
-    height: '45@vs',
+    flex: 1,
+    height: '42@vs',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '6@s',
     backgroundColor: colors.orange
   },
-  startButtonText: {
+  resetButton: {
+    flex: 1,
+    height: '42@vs',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '6@s',
+    backgroundColor: colors.purple,
+    marginLeft: '12@s'
+  },
+  buttonText: {
     color: 'white',
     fontSize: '16@s',
     fontWeight: 'bold'

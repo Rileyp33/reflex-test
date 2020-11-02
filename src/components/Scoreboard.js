@@ -27,11 +27,11 @@ const Scoreboard = ({
       disabled={!gameActive}
     >
       <View style={styles.difficultyContainer}>
-        <InfoButton onPress={showModal}/>
+        <InfoButton onPress={showModal} disabled={gameActive}/>
         <View style={styles.difficultyTextContainer}>
           <Text style={styles.difficultyText}>{`Difficulty: ${nSquares} Monster${nSquares > 1 ? 's' : ''}`}</Text>
         </View>
-        <PlusMinus onSelect={setDifficulty}/>
+        <PlusMinus onSelect={setDifficulty} disabled={gameActive}/>
       </View>
       <View style={styles.gameDataContainer}>
         <ScoringItem

@@ -4,11 +4,12 @@ import { scale } from 'react-native-size-matters'
 import Info from './Info'
 import { colors } from '../styles'
 
-const InfoButton = ({ onPress }) => {
+const InfoButton = ({ onPress, disabled }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
+      disabled={disabled}
     >
       <Info
         height={scale(36)}
